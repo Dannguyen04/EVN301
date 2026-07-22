@@ -6,36 +6,37 @@
             name="viewport"
             content="width=device-width,initial-scale=1,viewport-fit=cover"
         />
-        <meta name="theme-color" content="#0B0D13" />
+        <meta name="theme-color" content="#fff1f5" />
         <title>Event Management — Ôn tập 204 câu</title>
         <style>
             /* ============ DESIGN TOKENS ============ */
             :root {
-                /* Brand — indigo */
-                --p50: #eef2ff;
-                --p300: #a5b4fc;
-                --p400: #818cf8;
-                --p500: #6366f1;
-                --p600: #4f46e5;
-                --p700: #4338ca;
+                /* Brand palette based on the provided design tokens */
+                --p50: #fff1f5;
+                --p300: #ffdde5;
+                --p400: #ffb3c7;
+                --p500: #ff8aa4;
+                --p600: #e96b8b;
+                --p700: #856069;
                 /* Semantic */
-                --ok: #34d399;
-                --ok-bg: #062f22;
-                --ok-bd: #0f7a53;
-                --err: #fb7185;
-                --err-bg: #3b0d18;
-                --err-bd: #9f1239;
-                --warn: #fbbf24;
-                /* Neutrals (dark surface ramp) */
-                --n0: #0b0d13;
-                --n1: #12151e;
-                --n2: #181c28;
-                --n3: #212636;
-                --n4: #2c3346;
-                --n5: #3c4459;
-                --t1: #f2f4f9; /* primary text  — 15.8:1 on n0 */
-                --t2: #b4bbcc; /* secondary     — 8.1:1 */
-                --t3: #858da3; /* tertiary      — 4.6:1 AA */
+                --ok: #4f7f76;
+                --ok-bg: #ecf7f4;
+                --ok-bd: #b9d6cd;
+                --err: #dc2626;
+                --err-bg: #fef2f4;
+                --err-bd: #fb7185;
+                --warn: #f6d5c7;
+                /* Neutrals */
+                --n0: #ffffff;
+                --n1: #fff1f5;
+                --n2: #f7f0f3;
+                --n3: #ded0d7;
+                --n4: #f4f0f3;
+                --n5: #efedea;
+                --border: #dedede;
+                --t1: #111111; /* primary text */
+                --t2: #555555; /* secondary text */
+                --t3: #777777; /* tertiary text */
                 /* Type scale */
                 --fs-xs: 12px;
                 --fs-sm: 14px;
@@ -56,41 +57,18 @@
                 --s12: 48px;
                 --s16: 64px;
                 /* Radius */
-                --r-sm: 6px;
-                --r-md: 10px;
-                --r-lg: 14px;
-                --r-xl: 20px;
+                --r-sm: 8px;
+                --r-md: 16px;
+                --r-lg: 24px;
+                --r-xl: 28px;
                 --r-full: 9999px;
                 /* Shadow */
-                --sh-md: 0 4px 12px -2px rgb(0 0 0/0.4);
-                --sh-lg: 0 12px 32px -8px rgb(0 0 0/0.55);
+                --sh-md: 0 18px 48px -26px rgba(214, 147, 156, 0.12);
+                --sh-lg: 0 28px 70px -30px rgba(214, 147, 156, 0.12);
                 /* Motion */
                 --ease: cubic-bezier(0.32, 0.72, 0, 1);
                 --dur: 180ms;
                 --safe-b: env(safe-area-inset-bottom, 0px);
-            }
-            @media (prefers-color-scheme: light) {
-                :root {
-                    --n0: #fafbfd;
-                    --n1: #ffffff;
-                    --n2: #f3f5f9;
-                    --n3: #e5e9f0;
-                    --n4: #d2d8e3;
-                    --n5: #b9c1d0;
-                    --t1: #111725;
-                    --t2: #4a5468;
-                    --t3: #68718a;
-                    --ok-bg: #e7f9f0;
-                    --ok-bd: #34d399;
-                    --ok: #047857;
-                    --err-bg: #fef2f4;
-                    --err-bd: #fb7185;
-                    --err: #be123c;
-                    --p300: #4f46e5;
-                    --p400: #4f46e5;
-                    --sh-md: 0 2px 8px -1px rgb(16 24 40/0.08);
-                    --sh-lg: 0 12px 28px -8px rgb(16 24 40/0.14);
-                }
             }
             *,
             *::before,
@@ -125,7 +103,7 @@
 
             /* ============ A11Y ============ */
             :focus-visible {
-                outline: 2px solid var(--p400);
+                outline: 2px solid var(--p500);
                 outline-offset: 2px;
                 border-radius: var(--r-sm);
             }
@@ -176,7 +154,7 @@
                 z-index: 20;
                 background: color-mix(in srgb, var(--n0) 88%, transparent);
                 backdrop-filter: blur(12px);
-                border-bottom: 1px solid var(--n3);
+                border-bottom: 1px solid var(--border);
                 padding: var(--s4) 0 var(--s3);
             }
             @supports not (backdrop-filter: blur(1px)) {
@@ -190,10 +168,10 @@
                 gap: var(--s3);
             }
             .logo {
-                width: 36px;
-                height: 36px;
-                border-radius: var(--r-md);
-                background: linear-gradient(135deg, var(--p500), var(--p700));
+                width: 42px;
+                height: 42px;
+                border-radius: var(--r-xl);
+                background: var(--p300);
                 display: grid;
                 place-items: center;
                 font-size: var(--fs-lg);
@@ -222,7 +200,7 @@
                 z-index: 30;
                 background: color-mix(in srgb, var(--n1) 94%, transparent);
                 backdrop-filter: blur(16px);
-                border-top: 1px solid var(--n3);
+                border-top: 1px solid var(--border);
                 display: grid;
                 grid-template-columns: repeat(5, 1fr);
                 padding: var(--s2) var(--s2) calc(var(--s2) + var(--safe-b));
@@ -277,7 +255,7 @@
                     flex-direction: row;
                     gap: var(--s2);
                     padding: var(--s2) var(--s4);
-                    border: 1px solid var(--n3);
+                    border: 1px solid var(--border);
                     background: var(--n1);
                     min-height: 40px;
                 }
@@ -285,16 +263,17 @@
                     font-size: var(--fs-sm);
                 }
                 .tab[aria-selected="true"] {
-                    background: var(--p600);
-                    border-color: var(--p600);
+                    background: var(--p500);
+                    border-color: transparent;
                     color: #fff;
+                    box-shadow: 0 12px 24px -18px rgba(214, 147, 156, 0.14);
                 }
             }
 
             /* ============ SURFACES ============ */
             .card {
                 background: var(--n1);
-                border: 1px solid var(--n3);
+                border: 1px solid var(--border);
                 border-radius: var(--r-lg);
                 padding: var(--s5);
                 margin-bottom: var(--s4);
@@ -319,7 +298,7 @@
                 width: 100%;
                 text-align: left;
                 background: var(--n1);
-                border: 1px solid var(--n3);
+                border: 1px solid var(--border);
                 border-radius: var(--r-lg);
                 padding: var(--s4);
                 margin-bottom: var(--s3);
@@ -424,7 +403,7 @@
                 width: 100%;
                 text-align: left;
                 background: var(--n2);
-                border: 1.5px solid var(--n3);
+                border: 1.5px solid var(--border);
                 border-radius: var(--r-md);
                 padding: var(--s3) var(--s4);
                 cursor: pointer;
@@ -525,7 +504,7 @@
             .bar i {
                 display: block;
                 height: 100%;
-                background: linear-gradient(90deg, var(--p600), var(--p400));
+                background: var(--p400);
                 border-radius: var(--r-full);
                 transition: width 320ms var(--ease);
             }
@@ -543,20 +522,26 @@
                 align-items: center;
                 justify-content: center;
                 gap: var(--s2);
-                background: var(--p600);
+                background: var(--p400);
                 color: #fff;
                 border: 1.5px solid transparent;
                 padding: var(--s3) var(--s5);
-                border-radius: var(--r-md);
+                border-radius: var(--r-xl);
                 cursor: pointer;
                 font: inherit;
                 font-size: var(--fs-sm);
                 font-weight: 600;
                 min-height: 48px;
-                transition: background var(--dur) var(--ease);
+                transition:
+                    transform var(--dur) var(--ease),
+                    box-shadow var(--dur) var(--ease),
+                    background var(--dur) var(--ease);
+                box-shadow: 0 12px 26px -18px rgba(214, 147, 156, 0.18);
             }
             .btn:hover:not(:disabled) {
-                background: var(--p700);
+                background: var(--p500);
+                transform: translateY(-1px);
+                box-shadow: 0 18px 32px -20px rgba(214, 147, 156, 0.22);
             }
             .btn:disabled {
                 opacity: 0.4;
@@ -564,7 +549,7 @@
             }
             .btn.ghost {
                 background: transparent;
-                border-color: var(--n4);
+                border-color: var(--border);
                 color: var(--t2);
             }
             .btn.ghost:hover:not(:disabled) {
@@ -595,7 +580,7 @@
             input.inp {
                 width: 100%;
                 background: var(--n1);
-                border: 1.5px solid var(--n3);
+                border: 1.5px solid var(--border);
                 border-radius: var(--r-md);
                 padding: var(--s3) var(--s4);
                 color: var(--t1);
@@ -771,7 +756,7 @@
                 line-height: 1.7;
             }
             .tip .body b {
-                color: var(--p300);
+                color: var(rgb(255, 86, 114));
                 font-weight: 650;
             }
             .tip .body i {
@@ -3573,11 +3558,11 @@
             const ALL = DATA.flatMap((m) => m.qs);
             const BY = Object.fromEntries(ALL.map((q) => [q.id, q]));
             const MODES = [
-                ["home", "📚", "Module"],
-                ["flash", "🔁", "Thẻ"],
-                ["quiz", "🎯", "Quiz"],
-                ["tips", "💡", "Mẹo"],
-                ["search", "🔍", "Tìm"],
+                ["home", "📚", "Học theo Module nhé"],
+                ["flash", "🔁", "Phờ lát cạt"],
+                ["quiz", "🎯", "Quýt"],
+                ["tips", "💡", "Mẹo nè"],
+                ["search", "🔍", "Tìm nè"],
             ];
             const KEY = "em204_v3";
 
